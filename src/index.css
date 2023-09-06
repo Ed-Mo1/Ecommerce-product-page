@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+button {
+  all: unset;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+:root {
+  --amount-of-product: 0;
+  --Very-dark-blue: hsl(220, 13%, 13%);
+  --Dark-grayish-blue: hsl(219, 9%, 45%);
+  --Grayish-blue: hsl(220, 14%, 75%);
+  --Light-grayish-blue: hsl(223, 64%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 0%);
+  --Orange: hsl(26, 100%, 55%);
+  --Pale-orange: hsl(25, 100%, 94%);
+}
+
+.navbar {
+  border-bottom: 1px solid var(--Grayish-blue);
+}
+.nav-link {
+  padding: 3rem 0px;
+  position: relative;
+}
+.nav-link.active,
+.nav-link:hover {
+  color: var(--Very-dark-blue);
+}
+
+.nav-link::before {
+  content: "";
+  width: 0;
+  transition: width 0.5s ease;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  background-color: var(--Orange);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 100%;
+}
+
+.card-title {
+  font-weight: 500;
+}
+
+.delete {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
+
+#full-cart {
+  max-width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  right: 0;
+  overflow-y: auto;
+  top: calc(75%);
+  width: 90%;
+  display: none;
+}
+#full-cart.show {
+  display: block;
+  animation: show 0.5s ease;
+}
+
+@keyframes show {
+  0% {
+    scale: 0.8;
+    opacity: 0.5;
+  }
+
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+#full-cart #card-content {
+  height: fit-content;
+  max-height: 350px;
+  overflow-y: auto;
+}
+.navbar .card img {
+  width: 75px;
+}
+.navbar .card .card-header {
+  background-color: #fff !important;
+}
+#offcanvasNavbar img {
+  width: 25px;
+}
+.navbar-toggler img {
+  width: 20px;
+}
+#profile-pic img {
+  width: 60px;
+}
+#profile-pic {
+  border: 3px solid #fff;
+  transition: border-width 0.5s ease;
+}
+#profile-pic:hover {
+  border-color: var(--Orange);
+}
+#product-images {
+  width: fit-content;
+}
+#cart-icon {
+  position: relative;
+  cursor: pointer;
+}
+#num-request {
+  position: absolute;
+  color: var(--White);
+  place-content: center;
+  width: 30px;
+  height: 22px;
+  border-radius: 40px;
+  background-color: var(--Orange);
+  right: -14px;
+  top: -14px;
+  display: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+main {
+  padding: 5rem 0 2rem;
+  min-height: calc(100vh - 136.8px);
+}
+
+.carousel-control {
+  background-color: #fff;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-content: center;
+}
+#other-images img {
+  cursor: pointer;
+  height: 100px;
+  filter: opacity(1);
+  transition: filter 0.5s ease;
+}
+
+#other-images div {
+  border: 4px solid #fff !important;
+  border-radius: 20%;
+}
+#other-images div.active {
+  border-color: var(--Orange) !important;
+}
+#other-images div.active img {
+  filter: opacity(0.3);
+}
+.card-header {
+  font-size: 1rem;
+}
+
+#other-images img:hover,
+img:focus {
+  filter: opacity(0.3);
+}
+.active-image {
+  height: 500px;
+}
+
+#product-company {
+  color: var(--Orange);
+}
+#after-discount {
+  color: var(--Very-dark-blue);
+  font-weight: bold;
+}
+#after-discount #discount-amount {
+  font-size: 12px;
+  color: var(--Orange);
+  background-color: rgba(255, 125, 26, 0.2);
+  padding: 5px;
+}
+
+#counter {
+  background-color: var(--Light-grayish-blue);
+  box-shadow: var(--Light-grayish-blue) 0px 5px 15px;
+  width: 120px;
+}
+#amount {
+  all: unset;
+  user-select: none;
+}
+#submit,
+#checkout {
+  box-shadow: var(--Orange) 0px 7px 29px 0px;
+  background-color: var(--Orange);
+  color: var(--White);
+}
+
+:is(#submit, #checkout):hover {
+  transition: 0.5s ease;
+  opacity: 0.5;
+}
+#product-text {
+  width: 95%;
+}
+#submit svg path {
+  fill: var(--White);
+}
+
+#landing-carousel {
+  position: absolute;
+  top: 50%;
+  box-shadow: 0px 0px 40px 44000px rgba(0, 0, 0, 0.8);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 444;
+}
+#landing-carousel .carousel-item img {
+  height: 500px;
+}
+
+@media (width<1200px) {
+  .active-image {
+    height: 400px;
+  }
+  #other-images img {
+    height: 80px;
+  }
+  #other-images div {
+    border-radius: 23%;
+  }
+}
+@media (width<992px) {
+  #full-cart {
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% + 30px);
+  }
+  header {
+    position: fixed;
+    top: 0;
+    z-index: 222222222;
+    padding: 10px 0 20px;
+    background-color: var(--White);
+    width: 100%;
+    left: 0;
+  }
+  .navbar {
+    border-bottom: none !important;
+  }
+  .nav-link {
+    padding: 1rem 0;
+    width: fit-content;
+  }
+  #profile-pic img {
+    width: 50px;
+  }
+  .navbar-nav {
+    align-items: flex-start !important;
+  }
+}
+
+@media (width<=576px) {
+  #full-cart #card-content {
+    max-height: 250px;
+  }
+  :root {
+    font-size: 12px;
+  }
+  .delete {
+    right: 5px;
+  }
+  .nav-link {
+    font-size: 1.5rem;
+  }
+  .navbar .card-title {
+    font-size: 1rem;
+  }
+  #profile-pic img {
+    width: 30px;
+  }
+  #submit,
+  #counter {
+    width: 100%;
+  }
+}

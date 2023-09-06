@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./src/bootstrap.css" />
+    <link rel="stylesheet" href="./src/index.css" />
+    <title>Frontend Mentor | E-commerce product page</title>
+
+    <style>
+      .attribution {
+        font-size: 1rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav
+          class="navbar navbar-expand-lg gap-lg-3 align-items-center position-relative"
+        >
+          <a class="navbar-brand ms-md-3 order-2 pt-0 order-lg-1" href="#"
+            ><img src="./images/logo.svg" alt="" srcset=""
+          /></a>
+          <button
+            class="navbar-toggler border-0 order-1 order-lg-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <img src="./images/icon-menu.svg" alt="" srcset="" />
+          </button>
+          <div
+            class="offcanvas p-4 p-lg-0 order-2 offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <button
+                type="button"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              >
+                <img src="./images/icon-close.svg" alt="" srcset="" />
+              </button>
+            </div>
+            <div class="offcanvas-body">
+              <ul
+                class="navbar-nav justify-content-start column-gap-2 align-items-center flex-grow-1 pe-3"
+              >
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#"
+                    >Collections</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Men</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Women</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="right-section order-3 d-flex flex-grow-1 gap-4 gap-lg-5 align-items-center justify-content-end"
+          >
+            <a class="d-block" id="cart-icon"
+              ><img src="./images/icon-cart.svg" alt="" srcset="" />
+              <span id="num-request">0</span></a
+            >
+            <a href="#" class="d-block img-fluid rounded-pill" id="profile-pic"
+              ><img src="./images/image-avatar.png" alt="" srcset=""
+            /></a>
+          </div>
+          <div
+            id="full-cart"
+            class="card z-3 border-0 rounded-4 position-absolute"
+          >
+            <h2 class="card-header py-4 ps-4 fw-bold text-capitalize">cart</h2>
+            <div
+              id="card-content"
+              class="d-flex flex-column py-5 px-4 gap-4 g-0"
+            ></div>
+            <button
+              id="checkout"
+              class="btn d-block btn-lg my-5 w-75 mx-auto py-3"
+            >
+              Checkout
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="d-flex justify-content-center align-items-center">
+      <div class="container">
+        <div
+          id="content"
+          class="row row-cols-1 row-cols-lg-2 justify-content-evenly"
+        >
+          <div id="product-carousel" class="carousel slide d-lg-none">
+            <div class="carousel-inner"></div>
+            <button
+              class="carousel-control-prev opacity-100"
+              type="button"
+              data-bs-target="#product-carousel"
+              data-bs-slide="prev"
+            >
+              <div class="rounded-pill w-100 ms-4 carousel-control">
+                <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 1 3 9l8 8"
+                    stroke="#1D2026"
+                    stroke-width="3"
+                    fill="none"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              class="carousel-control-next opacity-100"
+              type="button"
+              data-bs-target="#product-carousel"
+              data-bs-slide="next"
+            >
+              <div class="rounded-pill w-100 me-4 carousel-control">
+                <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="m2 1 8 8-8 8"
+                    stroke="#1D2026"
+                    stroke-width="3"
+                    fill="none"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div id="product-images" class="d-none d-lg-block">
+            <div class="mb-5" id="active-image">
+              <img
+                src="./images/image-product-1.jpg"
+                class="img-fluid active-image rounded-4"
+                alt=""
+              />
+            </div>
+            <div id="other-images" class="d-flex justify-content-between"></div>
+          </div>
+          <div id="product-about ms-5" class="card ps-0 ps-lg-5 border-0">
+            <div class="card-body d-flex flex-column justify-content-center">
+              <h3
+                id="product-company"
+                class="card-subtitle mb-4 fs-5 text-uppercase"
+              >
+                Sneaker Company
+              </h3>
+              <h2 id="product-title" class="card-title display-5 fw-bold mb-5">
+                Fall Limited Edition Sneakers
+              </h2>
+              <p id="product-text" class="card-text text-black-50 mb-4">
+                These low-profile sneakers are your perfect casual wear
+                companion. Featuring a durable rubber outer sole, they’ll
+                withstand everything the weather can offer.
+              </p>
+              <div
+                class="prices d-flex flex-row justify-content-between flex-sm-column"
+              >
+                <h4
+                  id="after-discount"
+                  class="d-flex align-items-center gap-3 mb-2"
+                >
+                  <span id="current-price">$125.00</span>
+                  <span id="discount-amount" class="rounded">50%</span>
+                </h4>
+                <h4
+                  id="before-discount"
+                  class="text-black-50 text-decoration-line-through fs-6"
+                >
+                  $250.00
+                </h4>
+              </div>
+              <form
+                id="count-and-buy"
+                class="d-flex align-items-center flex-column flex-sm-row gap-4 mt-5"
+              >
+                <div
+                  id="counter"
+                  class="d-flex py-2 px-2 justify-content-between rounded"
+                >
+                  <button type="button" id="remove-item">
+                    <img src="./images/icon-minus.svg" alt="" />
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    readonly
+                    value="0"
+                    id="amount"
+                    class="form-control text-center"
+                  />
+                  <button type="button" id="add-item">
+                    <img src="./images/icon-plus.svg" alt="" />
+                  </button>
+                </div>
+                <button
+                  id="submit"
+                  type="submit"
+                  class="btn rounded-3 fw-bold d-flex align-items-center justify-content-center justify-content-sm-start gap-2 py-3 px-md-5 btn-lg"
+                >
+                  <svg
+                    width="22"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                      fill="#69707D"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                  <span>Add to cart</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://www.frontendmentor.io/profile/Ed-Mo1" target="_blank"
+        >Eyad Muhammad</a
+      >.
+    </div>
+    <script src="./src/bootstrap.min.js"></script>
+    <script src="./src/scrollreveal.min.js"></script>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
